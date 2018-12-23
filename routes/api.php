@@ -5,6 +5,7 @@ use App\Http\Resources\Product as ProductResource;
 use App\Product;
 use App\Post;
 use App\User;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -454,5 +455,16 @@ Route::post('setting',[
 ]);
 // end setting
 
+//Employer Post
+Route::group(['prefix'=>'employer'], function(){
+	Route::get('index','Post\EmployerPostController@index');
 
+	Route::get('add','Post\EmployerPostController@getAdd');
+	Route::post('add','Post\EmployerPostController@postAdd');
+
+	Route::get('edit/{id}','Post\EmployerPostController@getEdit');
+	Route::post('edit/{id}','Post\EmployerPostController@postEdit');
+
+	Route::get('delete','Post\EmployerPostController@getDelete');
+});
 
